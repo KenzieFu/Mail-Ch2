@@ -11,11 +11,11 @@ struct RecentList: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: true){
             LazyHStack(spacing:15){
-                        RecentItems()
-                        RecentItems()
-                        RecentItems()
-                        RecentItems()
-                        RecentItems()
+                ForEach(colors) { color in
+                    RecentItems(color: color)
+                }
+           
+                       
             }
         }
        
