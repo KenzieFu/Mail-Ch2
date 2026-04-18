@@ -9,11 +9,15 @@ import SwiftUI
 
 struct RecentList: View {
     var body: some View {
-        HStack{
-            List{
-                RecentItems()
+        ScrollView(.horizontal, showsIndicators: true){
+            LazyHStack(spacing:20){
+                        RecentItems()
+                        RecentItems()
+                        RecentItems()
+                        RecentItems()
             }
         }
+       
     }
 }
 

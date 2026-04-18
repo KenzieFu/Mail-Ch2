@@ -10,8 +10,13 @@ import SwiftUI
 struct RecentItems: View {
     var body: some View {
         HStack{
-            Circle().frame(width: 10).foregroundColor(.blue)
-            
+            VStack{
+                ZStack{
+                    Circle().frame(width: 73).foregroundColor(.blue)
+                    Text("K").font(.system(size: 34, weight: .bold))
+                }
+                Text("kenziefu").font(.system(size:13))
+            }
         }
     }
 }
