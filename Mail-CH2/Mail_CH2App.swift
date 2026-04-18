@@ -11,7 +11,7 @@ import SwiftUI
 struct Mail_CH2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Root()
         }
     }
 }
