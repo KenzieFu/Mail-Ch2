@@ -6,4 +6,6 @@
 //
 
 
-
+func randomize(total: Int, divider: Int)-> Int {
+    return total % divider;
+}

@@ -11,13 +11,10 @@ struct Navbar: View {
     var body: some View {
         NavigationStack{
            HStack{
-                
            }.toolbar{
-                    
                     ToolbarItem(placement:.principal){
                         Text("Hi, Kenzie").font(.system(size: 20, weight: .bold, design: .default))
                     }
-                    
                     ToolbarItem{
                         Button{
                             print("tapped")
