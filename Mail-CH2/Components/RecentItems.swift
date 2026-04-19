@@ -10,8 +10,6 @@ import SwiftUI
 struct RecentItems: View {
     var color: ColorsRecentItem
     var body: some View {
-        
-        HStack{
             VStack{
                 ZStack{
                     Circle().frame(width: 73).foregroundColor(Color(hex:color.background))
@@ -19,7 +17,6 @@ struct RecentItems: View {
                 }
                 Text("kenziefu").font(.system(size:13))
             }
-        }
     }
 }
 
