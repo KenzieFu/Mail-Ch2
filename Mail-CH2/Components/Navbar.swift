@@ -13,17 +13,20 @@ struct Navbar: View {
                            Text("Hi, Kenzie")
                 .font(.system(size: 30, weight: .bold)).foregroundColor(Color(hex:"AEAEB2"))
                            
-                           Spacer() // This creates the empty space in the middle
-                           
-                           // Just the icon/text, no Button wrapper
-                           Image(systemName: "ellipsis")
-                               .font(.system(size: 20, weight: .bold))
-                               .padding(8)
-                               .background(Circle().fill(Color.gray.opacity(0.1)))
-                       }
-
-                       .padding(.top, 10)
-                       .padding(.bottom, 20)
+                           Spacer()
+            Button{
+            }label:{
+                Image(systemName: "ellipsis")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.black)
+                    .padding(20)
+                    .background(Circle().fill(Color.white.opacity(0.1))).shadow(radius: 30)
+            }
+            .padding(.top, 10)
+            .padding(.bottom, 20)
+            
+            }
+                          
     }
 }
 
