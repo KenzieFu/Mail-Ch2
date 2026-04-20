@@ -15,7 +15,6 @@ struct Root: View {
                 Navbar()
                 HomePage().padding(.top, -10)
                 Spacer()
-            
             }
 //            .toolbar{
 //                ToolbarItem(placement:.topBarLeading){
@@ -25,7 +24,7 @@ struct Root: View {
 //                     Text("Just a test")
 //                  }
 //                  
-//                
+//
 //                ToolbarItem(placement:.topBarTrailing){
 //                    Button{
 //                        print("tapped")

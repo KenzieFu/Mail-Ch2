@@ -20,10 +20,11 @@ struct Navbar: View {
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(.black)
                     .padding(20)
-                    .background(Circle().fill(Color.white.opacity(0.1))).shadow(radius: 30)
+                    .background(Circle().fill(Color.white))
             }
             .padding(.top, 10)
             .padding(.bottom, 20)
+            .shadow(color:Color.gray,radius: 1)
             
             }
                           
