@@ -12,7 +12,6 @@ struct Navbar: View {
         HStack {
                            Text("Hi, Kenzie")
                 .font(.system(size: 30, weight: .bold)).foregroundColor(Color(hex:"AEAEB2"))
-                           
                            Spacer()
             Button{
             }label:{
