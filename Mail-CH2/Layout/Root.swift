@@ -10,11 +10,16 @@ import SwiftUI
 
 struct Root: View {
     var body: some View {
+     
         NavigationStack{
             VStack(spacing:0){
-                Navbar().padding(.horizontal,24)
-                HomePage().padding(.top, -10).padding(.horizontal,24)
-                Spacer()
+                
+                    Navbar().padding(.horizontal,24)
+                
+                    HomePage().padding(.top, -10).padding(.horizontal,24)
+                    Spacer()
+                
+                
             }
 //            .toolbar{
 //                ToolbarItem(placement:.topBarLeading){

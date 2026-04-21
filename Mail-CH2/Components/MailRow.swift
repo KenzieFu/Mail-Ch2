@@ -62,9 +62,11 @@ struct MailRow: View {
     }
 }
 #Preview {
+    // 1. Declare the state within the preview using @Previewable
+        @Previewable @State var mail = mails[0]
     NavigationStack {
         MailRow(
-            femail: .constant(mail1),
+            femail: $mail,
             allMails: mails,
             currentIndex: 0
         )
