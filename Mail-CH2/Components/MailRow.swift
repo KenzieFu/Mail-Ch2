@@ -8,57 +8,65 @@
 import SwiftUI
 
 struct MailRow: View {
-    var femail: Mail
+    @Binding var femail: Mail
+    var allMails: [Mail]
+    var currentIndex: Int
     var body: some View {
-      
-        
-        HStack (spacing: 12) {
-            Circle()
-                .foregroundStyle(Color.blue)
-                .frame(width: 8)
-            
-            RoundedRectangle(cornerRadius: 15)
-                .fill(Color.gray.opacity(0.3))
-                .frame(width: 50, height: 50)
-                .overlay(
-                    Text("PN")
-                        .foregroundColor(.white)
-                        .font(.subheadline)
-                )
-            
-                VStack (alignment: .leading) {
-                    HStack {
-                        Text(femail.sender)
-                            .fontWeight(.semibold)
-                        Spacer()
-                        
-                        HStack
-                        {
-                            Text(femail.date, format: .dateTime.day().month().year())
-                            Image(systemName: "chevron.right.circle")
-                        }
-                        .foregroundColor(.gray)
-                        .font(.caption)
-                    }
-
-                
-                    Text(femail.subject)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+        NavigationLink(destination: DetailScreenView(
+            femail: $femail,
+            allMails: allMails,
+            currentIndex: currentIndex)) {
+                HStack(spacing: 12){
+                    Circle()
+                        .foregroundStyle(femail.isRead ? Color.clear : Color.blue)
+                        .frame(width: 8)
                     
-                    Text(femail.summary)
-                    .lineLimit(2)
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(femail.color.gradient)
+                        .frame(width: 50, height: 50)
+                        .overlay(
+                            Text(String(femail.sender.prefix(1)).uppercased())
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .fontWeight(.bold)
+                        )
+                    
+                    VStack (alignment: .leading) {
+                        HStack {
+                            Text(femail.sender)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                            Spacer()
+                            
+                            HStack{
+                                Text(femail.date, format: .dateTime.day().month().year())
+                                Image(systemName: "chevron.right.circle")
+                            }
+                            .foregroundColor(.gray)
+                            .font(.caption)
+                        }
+                        
+                        Text(femail.subject)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                        
+                        Text(femail.summary)
+                            .lineLimit(2)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+                .padding(.horizontal)
             }
-        }
-        .padding(.horizontal)
-        
     }
 }
-
-
 #Preview {
-    // 3. The preview needs dummy data to compile now
-    MailRow(femail: Mail(sender: "The Miro Team", subject:"New Activity", date:Date(),recipient:"Ethereal",summary:"Enjoy your meal! 🍽️"))
+    NavigationStack {
+        MailRow(
+            femail: .constant(mail1),
+            allMails: mails,
+            currentIndex: 0
+        )
+    }
 }
