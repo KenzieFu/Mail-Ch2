@@ -14,18 +14,19 @@ struct HomePage: View {
         InboxSection(title:"Frequent",mails:mails,icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
         HStack{
             HStack{
-                Button{
-                }label:{
-                    HStack{
-                        Image(systemName: "rectangle.stack")
-                        Text("Cards")
-                    }
-                    .padding(.horizontal,20)
-                        .padding(.vertical,10)
-                        
-                   
-                }.background(Color.blue).foregroundColor(Color.white).clipShape(Capsule())
-            }
+                NavigationLink(destination:SwipeCard()){
+                        HStack{
+                            Image(systemName: "rectangle.stack")
+                            Text("Cards")
+                        }
+                        .padding(.horizontal,20)
+                            .padding(.vertical,10)
+                            
+                       
+                    }.background(Color.blue).foregroundColor(Color.white).clipShape(Capsule())
+                
+                    
+                }
             Spacer()
             HStack(spacing:0){
                 Button{
