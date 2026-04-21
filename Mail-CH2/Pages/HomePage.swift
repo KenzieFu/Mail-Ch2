@@ -18,7 +18,7 @@ struct HomePage: View {
         }
         HStack{
             HStack{
-                NavigationLink(destination:SwipeCard()){
+                NavigationLink(destination:SwipeView()){
                     HStack{
                         Image(systemName: "rectangle.stack")
                         Text("Cards")
