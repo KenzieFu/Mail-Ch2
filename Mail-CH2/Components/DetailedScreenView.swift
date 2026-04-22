@@ -102,13 +102,19 @@ struct DetailScreenView: View {
                 
                 
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Button("Add Device", systemImage: "archivebox") { }
+                    Button("Add Device", systemImage: "archivebox") {}
                     Button("Add Device", systemImage: "folder") { }
                     Button("Add Device", systemImage: "arrowshape.turn.up.backward") { }
                     Spacer()
-                    Button("Add Device", systemImage: "square.and.pencil") { }
+                    Button("", systemImage: "square.and.pencil") {
+                        showSheet = true
+                    }
                 }
             }
+            .sheet(isPresented: $showSheet) {
+                            EmptySheet(showSheet: $showSheet, Contacts: Contacts)
+                    .presentationDragIndicator(.visible)
+                        }
             .onAppear {
                 femail.isRead = true
             }

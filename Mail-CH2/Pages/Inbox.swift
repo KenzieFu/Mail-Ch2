@@ -28,9 +28,6 @@ struct Inbox: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     Section {
-                        //                        ForEach($femail) { $maile in
-                        //                            MailRow(femail: $maile)
-                        //                                .padding(.vertical, 8)
                         
                         ForEach(filteredMails) { mail in
                             if let idx = femail.firstIndex(where: { $0.id == mail.id }) {
