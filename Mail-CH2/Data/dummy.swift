@@ -238,3 +238,69 @@ import SwiftUI
 
 let mails: [Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
 // 16 February
+
+//Data for Contact
+
+   let contact1 =
+    Contact(name: "KenzieFu",
+            bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
+            textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
+
+let contact2 =
+    Contact(name: "DoriGoreng",
+            bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+            textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+
+let contact3 =
+    Contact(name: "Ethereal",
+            bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
+            textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
+
+let contact4 =
+    Contact(name: "Capybarra",
+            bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
+            textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
+
+let contact5 =
+    Contact(name: "Sasha",
+            bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
+            textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
+
+let contact6 =
+Contact(name: "KenzieFu",
+        bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
+        textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
+
+let contact7 =
+ Contact(name: "DoriGoreng",
+         bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+         textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+
+let contact8 =
+ Contact(name: "Ethereal",
+         bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
+         textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
+
+let contact9 =
+ Contact(name: "Capybarra",
+         bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
+         textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
+
+let contact10 =
+ Contact(name: "Sasha",
+         bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
+         textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
+
+let contact11 =
+Contact(name: "KenzieFu",
+        bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
+        textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
+
+let contact12 =
+ Contact(name: "DoriGoreng",
+         bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+         textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+
+let Contacts: [Contact] = [contact1,contact2,contact3, contact4,contact5,contact6,contact7,contact8,contact9,contact10,contact11,contact12]
+
+
