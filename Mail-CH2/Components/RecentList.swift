@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct RecentList: View {
+    let mails: [Mail]
     var body: some View {
         VStack(alignment:.leading){
             Text("Recent").font(Font.headline.bold())
             ScrollView(.horizontal, showsIndicators: true){
                 LazyHStack(spacing:15){
-                    ForEach(colors) { color in
-                        RecentItems(color: color)
+                    ForEach(Array(mails.enumerated()), id: \.element.id) { index, mail in
+                        RecentItems(mail:mail,color: colors[randomize(current: index, divider: colors.count)])
                     }
                            
                 }.padding(.bottom, 10).padding(.top,10)
@@ -27,5 +28,5 @@ struct RecentList: View {
 }
 
 #Preview {
-    RecentList()
+    RecentList(mails: [])
 }

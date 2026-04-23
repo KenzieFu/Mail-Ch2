@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomePage: View {
+
     var body: some View {
         ScrollView{
             VStack{
-                RecentList()
+                RecentList(mails:mails)
                 InboxSection(title:"Important",mails:mails, icon:"bookmark")
                 InboxSection(title:"Frequent",mails:mails,icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
             }

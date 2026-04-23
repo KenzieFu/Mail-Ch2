@@ -28,7 +28,7 @@ struct SwipeCard: View {
                         .font(.system(size:12, weight: .regular)).padding(.vertical,20)
                     Divider().padding(.vertical,10)
                     
-                    RecentItems(color: colors[0]).scaleEffect(0.9)
+                    RecentItems(mail:mails[0],color: colors[0]).scaleEffect(0.9)
                     
                 }.padding(.horizontal,40).padding(.bottom,30).padding(.top,20).background(Color(hex: "#FAFAFA")) .clipShape(RoundedRectangle(cornerRadius:50)).padding(20)
            

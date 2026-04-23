@@ -154,7 +154,7 @@
 //                }
 //            }
 //    }
-// 
+//    
 //    private func flyOut(direction: SwipeDirection) {
 //        let targetX: CGFloat = direction == .like ? 600 : -600
 //        withAnimation(.easeOut(duration: 0.3)) {

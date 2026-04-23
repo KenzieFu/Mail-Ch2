@@ -33,7 +33,7 @@ struct Inbox: View {
                             if let idx = femail.firstIndex(where: { $0.id == mail.id }) {
                                 MailRow(
                                     femail: $femail[idx],
-                                    allMails: femail,     // pass full array
+                                    allMails: femail,     
                                     currentIndex: idx  )
                                 .padding(.vertical, 8)
                             }

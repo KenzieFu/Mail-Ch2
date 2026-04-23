@@ -13,7 +13,6 @@ struct SwipeView: View {
        
       
             VStack{
-
                 CardStack(mails:mails)
             }.frame(maxWidth:.infinity, maxHeight:.infinity).background(Color(hex:"#727272"))
         
@@ -28,7 +27,6 @@ enum SwipeDirections {
 
 struct CardStack: View {
     @State var mails:[Mail]
-    @State var offset :CGSize = .zero
     
     // MARK: Actions
     private func handleSwipe(_ direction: SwipeDirections)->Void {
@@ -37,11 +35,15 @@ struct CardStack: View {
     }
     var body: some View{
         
-        ZStack{
-            ForEach($mails) { $mail in
-                Swipeable(mail:$mail){direction in
+        ZStack {
+            ForEach(Array(mails.prefix(3).enumerated().reversed()), id: \.element.id) { index, mail in
+                Swipeable(mail: .constant(mail)) { direction in
                     handleSwipe(direction)
                 }
+                .zIndex(Double(3 - index))
+//                .scaleEffect(1 - CGFloat(index) * 0.04)
+                .offset(y: CGFloat(index) * 8)
+                .allowsHitTesting(index == 0)
             }
         }
      

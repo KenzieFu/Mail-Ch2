@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct RecentItems: View {
+    var mail: Mail
     var color: ColorsRecentItem
+    
     var body: some View {
+        let firstLetter = String(mail.sender.first ?? "?").uppercased()
             VStack{
                 ZStack{
                     Circle().frame(width: 73).foregroundColor(Color(hex:color.background))
-                    Text("K").font(.system(size: 34, weight: .bold)).foregroundStyle(Color(hex:color.text))
+                    Text(firstLetter).font(.system(size: 34, weight: .bold)).foregroundStyle(Color(hex:color.text))
                 }
-                Text("kenziefu").font(.system(size:13))
+                Text(mail.sender).font(.system(size:13))
             }
     }
 }
 
 #Preview {
-    RecentItems(color: colors[1] )
+    RecentItems(mail:mails[0],color: colors[1] )
 }
