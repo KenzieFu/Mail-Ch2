@@ -10,11 +10,10 @@ import SwiftUI
 struct EmptySheet: View {
     
     @Binding var showSheet: Bool
-    
-    @State private var toField: String = ""
-    @State private var ccBccFrom: String = ""
-    @State private var subject: String = ""
-    @State private var bodyText: String = ""
+    @State var toField: String = ""
+    @State  var ccBccFrom: String = ""
+    @State  var subject: String = ""
+    @State  var bodyText: String = ""
     
     @State var Contacts: [Contact]
     var body: some View {
@@ -112,5 +111,5 @@ struct EmptySheet: View {
     }
 }
 #Preview {
-    EmptySheet(showSheet: .constant(true), Contacts: Contacts)
+    EmptySheet(showSheet: .constant(true),toField: "hello@gmail.com", Contacts: Contacts)
 }

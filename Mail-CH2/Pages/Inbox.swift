@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct Inbox: View {
-    @State var femail: [Mail] = mails
+    @Environment(MailStore.self) var mailStore
+
     @State private var selectedIndex: Int = 0
     
     var filteredMails: [Mail] {
         switch selectedIndex {
-        case 1: return femail.filter { !$0.isRead }      // Unread
-        case 2: return femail.filter { $0.isRead }       // Read
-        default: return femail                            // All Mail
+        case 1: return mailStore.unreadMail()    // Unread
+        case 2: return mailStore.readMail()       // Read
+        default: return mailStore.mails                        // All Mail
         }
     }
     
@@ -30,13 +31,14 @@ struct Inbox: View {
                     Section {
                         
                         ForEach(filteredMails) { mail in
-                            if let idx = femail.firstIndex(where: { $0.id == mail.id }) {
-                                MailRow(
-                                    femail: $femail[idx],
-                                    allMails: femail,     
-                                    currentIndex: idx  )
-                                .padding(.vertical, 8)
-                            }
+                            let idx = mailStore.mails.firstIndex(where: { $0.id == mail.id }) ?? 0
+                            MailRow(
+                                femail: mail,
+                                allMails: mailStore.mails,
+                                currentIndex: idx
+                            )
+                            .padding(.vertical, 8)
+                            
                         }
                     }
                 }
@@ -46,5 +48,5 @@ struct Inbox: View {
 }
 
 #Preview {
-    Inbox()
+    Inbox().environment(MailStore())
 }

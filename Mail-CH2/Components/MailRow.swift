@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MailRow: View {
-    @Binding var femail: Mail
+     var femail: Mail
     var allMails: [Mail]
     var currentIndex: Int
     var body: some View {
         NavigationLink(destination: DetailScreenView(
-            femail: $femail,
+            femail: femail,
             allMails: allMails,
             currentIndex: currentIndex)) {
                 HStack(spacing: 12){
@@ -66,7 +66,7 @@ struct MailRow: View {
         @Previewable @State var mail = mails[0]
     NavigationStack {
         MailRow(
-            femail: $mail,
+            femail: mail,
             allMails: mails,
             currentIndex: 0
         )

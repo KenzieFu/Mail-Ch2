@@ -32,6 +32,7 @@ import SwiftUI
                  Grab
                  """,
              isRead: false,
+
         )
 
     let mail2 =
@@ -51,6 +52,7 @@ import SwiftUI
             The Miro Team
             """,
              isRead: false,
+        
         )
 
     let mail3 =
@@ -69,6 +71,7 @@ import SwiftUI
                 LinkedIn
                 """,
              isRead: true,
+          
         )
 
     let mail4 =
@@ -235,6 +238,10 @@ import SwiftUI
                 """,
              isRead: true,
         )
+
+struct MailDummyData {
+    static let mails:[Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
+}
 
 let mails: [Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
 // 16 February

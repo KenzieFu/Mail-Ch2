@@ -20,7 +20,7 @@ struct RecentList: View {
                            
                 }.padding(.bottom, 10).padding(.top,10)
            
-            }.frame(height: 120)
+            }.frame(maxWidth:.infinity)
         }
     
        

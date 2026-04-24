@@ -43,5 +43,5 @@ struct Root: View {
 }
 
 #Preview {
-    Root()
+    Root().environment(MailStore())
 }

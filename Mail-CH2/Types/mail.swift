@@ -6,6 +6,12 @@
 //
 import SwiftUI
 
+enum MailCategory: String, CaseIterable, Identifiable {
+    case important, normal
+    
+    var id: String { self.rawValue }
+}
+
 struct Mail: Identifiable {
     var id: UUID = UUID()
     
@@ -17,8 +23,9 @@ struct Mail: Identifiable {
     var recipient: String
     var summary: String
     var isRead: Bool
+    var categories: MailCategory
     
-    init(sender: String, color: Color, subject: String, date: Date, recipient: String, summary: String, isRead: Bool) {
+    init(sender: String, color: Color, subject: String, date: Date, recipient: String, summary: String, isRead: Bool, categories: MailCategory = MailCategory.normal) {
         self.sender = sender
         self.color = color
         self.subject = subject
@@ -26,10 +33,9 @@ struct Mail: Identifiable {
         self.recipient = recipient
         self.summary = summary
         self.isRead = isRead
+        self.categories = categories
     }
     
-    //function
-    func open() {
-        //TBA
-    }
+   
+
 }

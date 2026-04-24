@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InboxSection: View {
     var title:String
-    @State var mails:[Mail]
+    var mails:[Mail]
     var icon:String
     var body: some View {
         VStack(alignment:.leading){
@@ -19,8 +19,8 @@ struct InboxSection: View {
                 
             }
             LazyVStack{
-                ForEach(Array($mails[0..<3])) { $mail in
-                    MailRow(femail: $mail, allMails: mails,currentIndex: 1)
+                ForEach(Array(mails.prefix(3))) { mail in
+                    MailRow(femail: mail, allMails: mails,currentIndex: 1)
                 }
             }
            

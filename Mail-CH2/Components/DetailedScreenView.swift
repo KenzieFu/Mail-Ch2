@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DetailScreenView: View {
-    
+    @Environment(MailStore.self) var mailStore
     @State private var showSheet = false
-    @Binding var femail: Mail
+    var femail: Mail
     var allMails: [Mail]
     var currentIndex: Int
     
@@ -75,7 +75,7 @@ struct DetailScreenView: View {
                         if let prev = previousMail,
                            let idx = allMails.firstIndex(where: { $0.id == prev.id }) {
                             DetailScreenView(
-                                femail: .constant(prev),
+                                femail: prev,
                                 allMails: allMails,
                                 currentIndex: idx
                             )
@@ -89,7 +89,7 @@ struct DetailScreenView: View {
                         if let next = nextMail,
                            let idx = allMails.firstIndex(where: { $0.id == next.id }) {
                             DetailScreenView(
-                                femail: .constant(next),
+                                femail: next,
                                 allMails: allMails,
                                 currentIndex: idx
                             )
@@ -112,11 +112,11 @@ struct DetailScreenView: View {
                 }
             }
             .sheet(isPresented: $showSheet) {
-                            EmptySheet(showSheet: $showSheet, Contacts: Contacts)
+                            EmptySheet(showSheet: $showSheet,toField: "kenziefubrianto@gmail.com", Contacts: Contacts)
                     .presentationDragIndicator(.visible)
                         }
             .onAppear {
-                femail.isRead = true
+                mailStore.markAsRead(mail: femail)
             }
         }
     }
@@ -124,7 +124,7 @@ struct DetailScreenView: View {
 
 #Preview {
     DetailScreenView(
-        femail: .constant(mail1),
+        femail: mail1,
         allMails: mails,
         currentIndex: 0
     )

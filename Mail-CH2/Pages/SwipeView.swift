@@ -8,12 +8,39 @@
 import SwiftUI
 
 struct SwipeView: View {
-    
+    @Environment(MailStore.self) var mailStore
     var body: some View {
-       
-            VStack{
-                CardStack(mails:mails)
-            }.frame(maxWidth:.infinity, maxHeight:.infinity).background(Color(hex:"#727272"))
+        
+                ZStack{
+                  
+                    
+                    CardStack().frame(maxWidth:.infinity, maxHeight:.infinity).background(Color(hex:"#727272")).ignoresSafeArea().navigationBarTitleDisplayMode(.inline).toolbar{
+                        ToolbarItem(placement:.title){
+                            Text("Focus Card") .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                         ToolbarItem(placement: .navigationBarTrailing){
+                            Button(action: {
+                                print("Swipe View")
+                            }) {
+                                Image(systemName: "ellipsis")
+                            }
+                        }
+                    }
+                    VStack{
+                        HStack{
+                            Image(systemName: "envelope.open.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.red)
+                            Spacer()
+                            Image(systemName: "bookmark.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.green)
+
+                        }.frame(maxWidth:.infinity).padding(.horizontal,30).padding(.vertical,20).opacity(0.3)
+                       
+                    Spacer()
+                    }.frame(maxWidth:.infinity,maxHeight:.infinity)
+                }
+               
+            
+     
         
     }
 }
@@ -25,26 +52,91 @@ enum SwipeDirections {
 
 
 struct CardStack: View {
-    @State var mails:[Mail]
+    @Environment(MailStore.self) var mailStore
+    @State private var cardMails: [Mail] = []
+    @State var showSheet: Bool = false
     
     // MARK: Actions
-    private func handleSwipe(_ direction: SwipeDirections)->Void {
-        _ = withAnimation { mails.removeFirst() }
+    private func handleSwipe(_ direction: SwipeDirections, mail: Mail)->Void {
+        switch direction{
+        case .important:
+            mailStore.marksAsImportant(mail:mail)
+            mailStore.markAsRead(mail:mail)
+            break;
+        case .trash:
+            mailStore.markAsRead(mail:mail)
+            break;
+        case.none:
+            break
+        }
+        cardMails.removeAll { $0.id == mail.id }
       
     }
     var body: some View{
-        
-        ZStack {
-            ForEach(Array(mails.prefix(3).enumerated().reversed()), id: \.element.id) { index, mail in
-                Swipeable(mail: .constant(mail)) { direction in
-                    handleSwipe(direction)
+        GeometryReader{ geo in
+            
+            ZStack {
+                ForEach(Array(cardMails.prefix(3).enumerated().reversed()), id: \.element.id) { index, mail in
+                    Swipeable(mail: .constant(mail)) { direction in
+                        handleSwipe(direction,mail:mail)
+                    }
+                    .zIndex(Double(3 - index))
+                    //                .scaleEffect(1 - CGFloat(index) * 0.04)
+                    .offset(y: CGFloat(index) * 8)
+                    .allowsHitTesting(index == 0)
                 }
-                .zIndex(Double(3 - index))
-//                .scaleEffect(1 - CGFloat(index) * 0.04)
-                .offset(y: CGFloat(index) * 8)
-                .allowsHitTesting(index == 0)
-            }
+                VStack {
+                    Spacer()
+                    HStack(alignment: .center, spacing: 8) {
+                        Button {
+                        } label: {
+                            Image(systemName: "clock")
+                                .font(.system(size: 24))
+                                .frame(width: 56, height: 56)
+                        }
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                        
+                        Button {
+                            showSheet=true
+                        } label: {
+                            Image(systemName: "arrowshape.turn.up.left.fill")
+                                .font(.system(size: 28))
+                                .frame(width: 64, height: 64)
+                        }
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                        
+                        Button {
+                        } label: {
+                            Image(systemName: "ellipsis")
+                                .font(.system(size: 24))
+                                .frame(width: 56, height: 56)
+                        }
+                        .background(Color.white)
+                        .foregroundColor(.black)
+                        .clipShape(Circle())
+                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom, 70)
+                }
+                
+                
+            }.frame(width:geo.size.width,height:geo.size.height)
+                .sheet(isPresented: $showSheet) {
+                    EmptySheet(showSheet: $showSheet, toField:"kenziefubrianto@gmail.com", Contacts: Contacts)
+        .presentationDragIndicator(.visible)
+                }.onAppear {
+                    cardMails = mailStore.unreadMail()
+                }
         }
+        
+      
      
        
     }
@@ -111,25 +203,61 @@ struct Swipeable: View {
     private var rotationAngle: CGFloat{
         Double(offset.width / 20)   // tilt is depends on the width of the object being dragged from the position.  the small is the division the more degree it will be
     }
+
     
     var body: some View{
         
         ZStack{
             if offset.width < 0 && isDragging {
-                HStack(spacing:0){
-                    Color.red
-                        .ignoresSafeArea()
-                        .containerRelativeFrame(.horizontal,alignment: .leading){length, _ in length/2}
-                        .opacity(trashOpacity)
-                    Spacer()
+                HStack {
+                             // warm ambient glow filling the background
+                             LinearGradient(
+                                 colors: [
+                                     Color.red.opacity(trashOpacity * 1.2),
+                                     Color.red.opacity(trashOpacity * 0.6),
+                                     Color.clear
+                                 ],
+                                 startPoint: .leading,
+                                 endPoint: .trailing
+                             )
+                             .ignoresSafeArea()
+
+                             // bright sun core bursting from the right edge
+//                             RadialGradient(
+//                                 colors: [
+//                                     Color.white.opacity(importantOpacity * 1.5),
+//                                     Color.green.opacity(importantOpacity),
+//                                     Color.green.opacity(importantOpacity * 0.8),
+//                                     Color.clear
+//                                 ],
+//                                 center: UnitPoint(x: 1.1, y: 0.5), // slightly off-screen right
+//                                 startRadius: 0,
+//                                 endRadius: 300
+//                             )
+//                             .ignoresSafeArea()
                 }
+                
             }else if offset.width > 0 && isDragging {
-                HStack(spacing:0){
-                    Spacer()
-                    Color.green
-                        .ignoresSafeArea()
-                        .containerRelativeFrame(.horizontal,alignment: .trailing){length, _ in length/2}
-                        .opacity(importantOpacity)
+//                HStack(spacing:0){
+//                    Spacer()
+//                    Color.green
+//                        .ignoresSafeArea()
+//                        .containerRelativeFrame(.horizontal,alignment: .trailing){length, _ in length/2}
+//                        .opacity(importantOpacity)
+                HStack {
+                             // warm ambient glow filling the background
+                             LinearGradient(
+                                 colors: [
+                                     Color.green.opacity(importantOpacity * 1.2),
+                                     Color.green.opacity(importantOpacity * 0.6),
+                                     Color.clear
+                                 ],
+                                 startPoint: .trailing,
+                                 endPoint: .leading
+                             )
+                             .ignoresSafeArea()
+
+                            
                 }
             }
             SwipeCard().offset(offset)   // add state offset so the object can update its position
@@ -137,6 +265,9 @@ struct Swipeable: View {
                 .gesture(dragGesture)  // add the gesture
                 .animation(.interactiveSpring(), value: offset)  // animation
                 .scaleEffect(1 + (isDragging ? 0.1 : 0))
+                .shadow(color: .gray, radius: 20,x: 0,y: 10)
+               
+                
             
             
         }

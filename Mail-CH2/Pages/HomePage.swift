@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct HomePage: View {
-
+    @Environment(MailStore.self) var mailStore
     var body: some View {
         ScrollView{
             VStack{
-                RecentList(mails:mails)
-                InboxSection(title:"Important",mails:mails, icon:"bookmark")
-                InboxSection(title:"Frequent",mails:mails,icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
+                RecentList(mails:mailStore.recentMail())
+                InboxSection(title:"Important",mails:mailStore.filterImportanMail(), icon:"bookmark")
+                InboxSection(title:"Frequent",mails:mailStore.filterImportanMail(),icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
             }
         }
         HStack{
@@ -64,5 +64,5 @@ struct HomePage: View {
 }
 
 #Preview {
-    HomePage()
+    HomePage().environment(MailStore())
 }
