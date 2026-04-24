@@ -11,7 +11,6 @@ struct SwipeView: View {
     
     var body: some View {
        
-      
             VStack{
                 CardStack(mails:mails)
             }.frame(maxWidth:.infinity, maxHeight:.infinity).background(Color(hex:"#727272"))
