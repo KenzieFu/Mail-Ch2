@@ -12,6 +12,7 @@ import SwiftUI
 class MailStore {
     var mails: [Mail] = MailDummyData.mails
     
+    
     //function
     func readMail()->[Mail] {
         return mails.filter { $0.isRead == true }
@@ -49,6 +50,7 @@ class MailStore {
         return mails.firstIndex(where: { $0.id == mail.id })!
     }
     
+  
     
     
 }

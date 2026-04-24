@@ -55,9 +55,11 @@ struct CardStack: View {
     @Environment(MailStore.self) var mailStore
     @State private var cardMails: [Mail] = []
     @State var showSheet: Bool = false
+    @State var selectedMail: Mail? = nil
     
     // MARK: Actions
     private func handleSwipe(_ direction: SwipeDirections, mail: Mail)->Void {
+        
         switch direction{
         case .important:
             mailStore.marksAsImportant(mail:mail)
@@ -69,8 +71,9 @@ struct CardStack: View {
         case.none:
             break
         }
+        
         cardMails.removeAll { $0.id == mail.id }
-      
+        selectedMail = cardMails.first
     }
     var body: some View{
         GeometryReader{ geo in
@@ -85,54 +88,58 @@ struct CardStack: View {
                     .offset(y: CGFloat(index) * 8)
                     .allowsHitTesting(index == 0)
                 }
-                VStack {
-                    Spacer()
-                    HStack(alignment: .center, spacing: 8) {
-                        Button {
-                        } label: {
-                            Image(systemName: "clock")
-                                .font(.system(size: 24))
-                                .frame(width: 56, height: 56)
+                if !cardMails.isEmpty {
+                    VStack {
+                        Spacer()
+                        HStack(alignment: .center, spacing: 8) {
+                            Button {
+                            } label: {
+                                Image(systemName: "clock")
+                                    .font(.system(size: 24))
+                                    .frame(width: 56, height: 56)
+                            }
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                            
+                            Button {
+                                showSheet=true
+                            } label: {
+                                Image(systemName: "arrowshape.turn.up.left.fill")
+                                    .font(.system(size: 28))
+                                    .frame(width: 64, height: 64)
+                            }
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                            
+                            Button {
+                            } label: {
+                                Image(systemName: "ellipsis")
+                                    .font(.system(size: 24))
+                                    .frame(width: 56, height: 56)
+                            }
+                            .background(Color.white)
+                            .foregroundColor(.black)
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
                         }
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .clipShape(Circle())
-                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
-                        
-                        Button {
-                            showSheet=true
-                        } label: {
-                            Image(systemName: "arrowshape.turn.up.left.fill")
-                                .font(.system(size: 28))
-                                .frame(width: 64, height: 64)
-                        }
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .clipShape(Circle())
-                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
-                        
-                        Button {
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .font(.system(size: 24))
-                                .frame(width: 56, height: 56)
-                        }
-                        .background(Color.white)
-                        .foregroundColor(.black)
-                        .clipShape(Circle())
-                        .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+                        .frame(maxWidth: .infinity)
+                        .padding(.bottom, 70)
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(.bottom, 70)
                 }
+             
                 
                 
             }.frame(width:geo.size.width,height:geo.size.height)
                 .sheet(isPresented: $showSheet) {
-                    EmptySheet(showSheet: $showSheet, toField:"kenziefubrianto@gmail.com", Contacts: Contacts)
+                    EmptySheet(showSheet: $showSheet, toField:selectedMail?.sender ?? "", Contacts: Contacts)
         .presentationDragIndicator(.visible)
                 }.onAppear {
                     cardMails = mailStore.unreadMail()
+                    selectedMail = cardMails.first ?? nil
                 }
         }
         
@@ -178,6 +185,7 @@ struct Swipeable: View {
     private var dragGesture : some Gesture {
         DragGesture()
             .onChanged{ value in
+        
             offset = value.translation
             isDragging = true // calculate current position of the cursor position
           
