@@ -12,21 +12,20 @@ struct InboxSection: View {
     @State var mails:[Mail]
     var icon:String
     var body: some View {
-        VStack(alignment:.leading){
-            HStack{
-                Image(systemName: icon)
-                Text(title).font(Font.headline.bold())
-                
-            }
-            LazyVStack{
-                ForEach(Array($mails[0..<3])) { $mail in
-                    MailRow(femail: $mail, allMails: mails,currentIndex: 1)
+            VStack(){
+                HStack{
+                    Image(systemName: icon)
+                    Text(title).font(Font.headline.bold())
+                    Spacer()
+                    Image(systemName: "chevron.right")
                 }
-            }
-           
-                
-        }.frame(maxWidth: .infinity, alignment: .leading).padding(.top,20)
-       
+                .padding(.horizontal, 15)
+                VStack{
+                    ForEach(Array($mails[0..<3])) { $mail in
+                        MailRow(femail: $mail, allMails: mails,currentIndex: 1)
+                    }
+                }
+            }.padding(.top,20)
     }
 }
 

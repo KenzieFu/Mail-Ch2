@@ -80,7 +80,6 @@ struct EmptySheet: View {
                         HStack {
                             Text("Subject :")
                                 .foregroundColor(.secondary)
-                                .frame(width: 100, alignment: .leading)
                             TextField("", text: $subject)
                         }
                         .padding(.horizontal, 20)
@@ -88,6 +87,9 @@ struct EmptySheet: View {
                         
                         Divider().padding(.leading, 20)
                     }
+                    TextField("", text: $bodyText,axis:.vertical)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 14)
                     Spacer()
                 }
             }

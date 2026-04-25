@@ -10,13 +10,28 @@ import SwiftUI
 struct RecentItems: View {
     var color: ColorsRecentItem
     var body: some View {
-            VStack{
-                ZStack{
-                    Circle().frame(width: 73).foregroundColor(Color(hex:color.background))
-                    Text("K").font(.system(size: 34, weight: .bold)).foregroundStyle(Color(hex:color.text))
+        VStack{
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 18) {
+                    ForEach(Contacts) { contact in
+                        VStack(spacing: 6) {
+                            ZStack {
+                                Circle()
+                                    .fill(contact.bgColor)
+                                    .frame(width: 68, height: 68)
+                                Text(String(contact.name.prefix(1)).uppercased())
+                                    .font(.system(size: 30, weight: .bold))
+                                    .foregroundColor(contact.textColor)
+                            }
+                            Text(contact.name)
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
-                Text("kenziefu").font(.system(size:13))
             }
+            .padding(.bottom, 16)
+        }
     }
 }
 

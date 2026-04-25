@@ -12,7 +12,7 @@ struct SwipeCard: View {
         case archive,trash,none
     }
     var body: some View {
-        var longText = "You can accept or decline this invitation. You can also head over to https://github.com/KenzieFu/Ch-2-Ken-Dori-There to check out the repository or visit @KenzieFu to learn a bit more about them. \n\n This invitation will expire in 7 days."
+        let longText = "You can accept or decline this invitation. You can also head over to https://github.com/KenzieFu/Ch-2-Ken-Dori-There to check out the repository or visit @KenzieFu to learn a bit more about them. \n\n This invitation will expire in 7 days."
                 VStack(alignment:.center,spacing: 0){
                   
                     Text("KenzieFu invited you to KenzieFu/ch-2-mail") .multilineTextAlignment(.center).padding(20).font(.system(size:15, weight: .bold))

@@ -13,15 +13,15 @@ let colors :[ColorsRecentItem]=[
     ColorsRecentItem(background: "#FF9E97", text: "#E7475B")
 ]
 import SwiftUI
-    
-    //Data for Email Previews
-    let mail1 =
-        Mail(sender: "Grab",
-             color:Color.green,
-             subject:"Your Grab E-Receipt",
-             date:Date(),
-             recipient:"KenzieFun",
-             summary:"""
+
+// MARK: - Data for Email Previews -
+let mail1 =
+Mail(sender: "Grab",
+     color:Color.green,
+     subject:"Your Grab E-Receipt",
+     date:Date(),
+     recipient:"KenzieFun",
+     summary:"""
                  We hope you enjoyed your trip! \n
                  Hi KenzieFun, \n
                  Thanks for riding with Grab. Here’s your e-receipt for your recent order, and we hope everything arrived fresh and just the way you like it. \n
@@ -31,16 +31,17 @@ import SwiftUI
                  Best regards,
                  Grab
                  """,
-             isRead: false,
-        )
+     isRead: false,
+     
+)
 
-    let mail2 =
-        Mail(sender: "The Miro Team",
-             color:Color.yellow,
-             subject:"New Activity",
-             date:Date(),
-             recipient:"Ethereal",
-             summary:"""
+let mail2 =
+Mail(sender: "The Miro Team",
+     color:Color.yellow,
+     subject:"New Activity",
+     date:Date(),
+     recipient:"Ethereal",
+     summary:"""
             New edits and comments on your board, take a look at what changed \n
             Hi Ethereal,\n
             There’s been some new activity on your Miro board. Your collaborators have made edits and left comments, so you can quickly catch up on what’s changed and keep things moving forward. \n
@@ -50,16 +51,16 @@ import SwiftUI
             Best regards,
             The Miro Team
             """,
-             isRead: false,
-        )
+     isRead: false,
+)
 
-    let mail3 =
-        Mail(sender: "Linkedin",
-             color:Color.blue,
-             subject:"Apple Academy is Hiring",
-             date:Date(),
-             recipient:"Dori",
-             summary:"""
+let mail3 =
+Mail(sender: "Linkedin",
+     color:Color.blue,
+     subject:"Apple Academy is Hiring",
+     date:Date(),
+     recipient:"Dori",
+     summary:"""
                 Hi Dori, Seeing your amazing unbelievable talent, we think you might be a great fit in Apple Academy as a Senior Learner \n
                 We came across your profile and were genuinely impressed by your experience and creative work. Based on what we’ve seen, we believe you could be a strong fit for an opportunity at Apple Academy. \n
                 We’re currently looking for a Senior Learner who is passionate about growth, collaboration, and building impactful projects alongside a dynamic community. Your background and skills stood out to us as someone who could thrive in this environment. \n
@@ -68,16 +69,16 @@ import SwiftUI
                 Best regards,
                 LinkedIn
                 """,
-             isRead: true,
-        )
+     isRead: true,
+)
 
-    let mail4 =
-        Mail(sender: "Starbucks",
-             color:Color.green,
-             subject:"Celebrate your 31st Birthday!",
-             date:Date(),
-             recipient:"Runi",
-             summary:"""
+let mail4 =
+Mail(sender: "Starbucks",
+     color:Color.green,
+     subject:"Celebrate your 31st Birthday!",
+     date:Date(),
+     recipient:"Runi",
+     summary:"""
                 Hi Runi, Congratulations on turning 31! Enjoy a birthday treat on us, claim your reward today! \n
                 Happy 31st birthday! We’re so glad to be part of your special day and wanted to celebrate with you. \n
                 To make your day a little sweeter, we’ve prepared a special birthday treat just for you. You can claim your reward at your nearest Starbucks store or through the app. \n
@@ -87,15 +88,15 @@ import SwiftUI
                 Best regards,
                 Starbucks
                 """,
-             isRead: false,
-        )
-    let mail5 =
-        Mail(sender: "TMZ",
-             color:Color.red,
-             subject:"Possible Job Opportunity",
-             date:Date(),
-             recipient:"Baeni",
-             summary:"""
+     isRead: false,
+)
+let mail5 =
+Mail(sender: "TMZ",
+     color:Color.red,
+     subject:"Possible Job Opportunity",
+     date:Date(),
+     recipient:"Baeni",
+     summary:"""
                 Hi Baeni, we would be honored to have you join our team as our new lead photographer \n
                 We’ve been following your work and are incredibly impressed by your eye for detail and ability to capture compelling moments. Your style and consistency really stood out to us. \n
                 We’d be honored to invite you to join TMZ as our new Lead Photographer. This role would involve covering high-profile events, capturing exclusive content, and working alongside a fast-paced media team. \n
@@ -105,16 +106,16 @@ import SwiftUI
                 Best regards,
                 TMZ
                 """,
-             isRead: true,
-        )
+     isRead: true,
+)
 
-    let mail6 =
-        Mail(sender: "Pertamina",
-             color:Color.red,
-            subject:"Hello Elite Premium Member ⭐️",
-             date:Date(),
-             recipient:"Rayne",
-             summary:"""
+let mail6 =
+Mail(sender: "Pertamina",
+     color:Color.red,
+     subject:"Hello Elite Premium Member ⭐️",
+     date:Date(),
+     recipient:"Rayne",
+     summary:"""
                 Hello Rayne, you have been upgraded to Pertamina's Elite Permium Member ⭐️ Exclusive perks are waiting for you, unlock your benefits now \n
                 Congratulations! You’ve officially been upgraded to Pertamina’s Elite Premium Member status. This tier unlocks a range of exclusive benefits designed to give you a more rewarding experience. \n
                 As an Elite Premium Member, you’ll enjoy special privileges such as priority services, exclusive offers, and access to limited-time rewards tailored just for you. \n
@@ -123,16 +124,16 @@ import SwiftUI
                 Best regards,
                 Pertamina
                 """,
-             isRead: false,
-        )
+     isRead: false,
+)
 
-    let mail7 =
-        Mail(sender: "Steam",
-             color:Color.blue,
-             subject:"Congrats on Your First Game!",
-             date:Date(),
-             recipient:"Mask",
-             summary:"""
+let mail7 =
+Mail(sender: "Steam",
+     color:Color.blue,
+     subject:"Congrats on Your First Game!",
+     date:Date(),
+     recipient:"Mask",
+     summary:"""
                 Congratulations Mask! Your game is live and ready to play, share it with friends \n
                 Congratulations on launching your very first game on Steam! This is a huge milestone, and you should be proud of bringing your creation to life. \n
                 Your game is now live and available for players around the world to discover, play, and enjoy. It’s the perfect time to share it with your friends, community, and audience to start building momentum. \n
@@ -141,16 +142,16 @@ import SwiftUI
                 Best regards,
                 Steam
                 """,
-             isRead: false,
-        )
+     isRead: false,
+)
 
-    let mail8 =
-        Mail(sender: "Traveloka",
-             color:Color.green,
-             subject:"Your Flight Receipt to Singapore",
-             date:Date(),
-             recipient:"Vitha",
-             summary:"""
+let mail8 =
+Mail(sender: "Traveloka",
+     color:Color.green,
+     subject:"Your Flight Receipt to Singapore",
+     date:Date(),
+     recipient:"Vitha",
+     summary:"""
                 Hi Vitha, Your booking details are confirmed, view your full receipt anytime \n
                 Your flight booking to Singapore has been successfully confirmed, and your receipt is now available for your reference. \n
                 You can review your full booking details, including flight schedule, passenger information, and payment summary, directly through your Traveloka account at any time. \n
@@ -159,16 +160,16 @@ import SwiftUI
                 Best regards,
                 Traveloka
                 """,
-             isRead: true,
-        )
+     isRead: true,
+)
 
-    let mail9 =
-        Mail(sender: "Strava",
-             color:Color.orange,
-             subject:"Wow! Nice Work, You ran 120yds",
-             date:Date(),
-             recipient:"SamJOYCE",
-             summary: """
+let mail9 =
+Mail(sender: "Strava",
+     color:Color.orange,
+     subject:"Wow! Nice Work, You ran 120yds",
+     date:Date(),
+     recipient:"SamJOYCE",
+     summary: """
                 Congrats Sam, you've ran the distance of an entire american football field. Your latest activity has been recorded, keep up the momentum \n
                 Nice work on your latest run! Hitting 120 yards is a great step forward, and every bit of distance adds up toward your bigger goals. \n
                 Your activity has been successfully recorded, and you can check out your stats, pace, and progress anytime on your Strava profile. \n
@@ -178,16 +179,16 @@ import SwiftUI
                 Best regards,
                 Strava
                 """,
-             isRead: false,
-        )
+     isRead: false,
+)
 
-    let mail10 =
-        Mail(sender: "Tokopedia",
-             color:Color.green,
-             subject:"Pesanan Selesai: Microwave",
-             date:Date(),
-             recipient:"Moreno",
-             summary:"""
+let mail10 =
+Mail(sender: "Tokopedia",
+     color:Color.green,
+     subject:"Pesanan Selesai: Microwave",
+     date:Date(),
+     recipient:"Moreno",
+     summary:"""
                 Hey Moreno, Your order has been delivered successfully, we hope you enjoy it! \n
                 Pesanan Anda untuk microwave telah berhasil доставkan dan kini sudah sampai di tujuan. Kami harap produk yang Anda terima sesuai dengan harapan dan dapat digunakan dengan baik. \n
                 Anda dapat melihat detail pesanan, termasuk informasi pengiriman dan pembayaran, melalui akun Tokopedia Anda kapan saja. \n
@@ -196,16 +197,16 @@ import SwiftUI
                 Best regards,
                 Tokopedia
                 """,
-             isRead: false,
-        )
+     isRead: false,
+)
 
-    let mail11 =
-        Mail(sender: "Medium",
-             color:Color.black,
-             subject:"Read about Healthy Bowels Movement",
-             date:Date(),
-             recipient:"Capybarra",
-             summary:"""
+let mail11 =
+Mail(sender: "Medium",
+     color:Color.black,
+     subject:"Read about Healthy Bowels Movement",
+     date:Date(),
+     recipient:"Capybarra",
+     summary:"""
                 We've heard you've been having issues, here's a new article you might find useful, start reading now \n
                 Hi Capybarra,\n
                 We came across an article that might be helpful for you, especially if you’ve been exploring ways to improve your digestive health. \n
@@ -215,16 +216,16 @@ import SwiftUI
                 Best regards,
                 Medium
                 """,
-             isRead: true,
-        )
+     isRead: true,
+)
 
-    let mail12 =
-        Mail(sender: "Hevy",
-             color:Color.black,
-             subject:"Check out your progress",
-             date:Date(),
-             recipient:"Choki",
-             summary:"""
+let mail12 =
+Mail(sender: "Hevy",
+     color:Color.black,
+     subject:"Check out your progress",
+     date:Date(),
+     recipient:"Choki",
+     summary:"""
                 Choki, you've lifted 10x your body weight. Keep up the great work! \n
                 We just took a look at your recent training progress, and it’s seriously impressive. You’ve reached a milestone of lifting a total volume equivalent to 10x your body weight. \n
                 This kind of consistency and effort shows real dedication to your strength journey. Every session is clearly adding up, and your progress reflects the work you’ve been putting in. \n
@@ -233,73 +234,72 @@ import SwiftUI
                 Best regards,
                 Hevy
                 """,
-             isRead: true,
-        )
+     isRead: true,
+)
 
 let mails: [Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
 // 16 February
 
-//Data for Contact
-
-   let contact1 =
-    Contact(name: "KenzieFu",
-            bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
-            textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
+// MARK: - Data for Contact-
+let contact1 =
+Contact(name: "KenzieFu",
+        bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
+        textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
 
 let contact2 =
-    Contact(name: "DoriGoreng",
-            bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
-            textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+Contact(name: "DoriGoreng",
+        bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+        textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
 
 let contact3 =
-    Contact(name: "Ethereal",
-            bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
-            textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
+Contact(name: "Ethereal",
+        bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
+        textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
 
 let contact4 =
-    Contact(name: "Capybarra",
-            bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
-            textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
+Contact(name: "Capybarra",
+        bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
+        textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
 
 let contact5 =
-    Contact(name: "Sasha",
-            bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
-            textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
+Contact(name: "Mask",
+        bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
+        textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
 
 let contact6 =
-Contact(name: "KenzieFu",
+Contact(name: "Rayne",
         bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
         textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
 
 let contact7 =
- Contact(name: "DoriGoreng",
-         bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
-         textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+Contact(name: "Vitha",
+        bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+        textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
 
 let contact8 =
- Contact(name: "Ethereal",
-         bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
-         textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
+Contact(name: "Baeni",
+        bgColor: Color(red: 0.84, green: 0.95, blue: 0.82),
+        textColor: Color(red: 0.10, green: 0.55, blue: 0.25))
 
 let contact9 =
- Contact(name: "Capybarra",
-         bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
-         textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
+Contact(name: "Choki",
+        bgColor: Color(red: 0.98, green: 0.87, blue: 0.68),
+        textColor: Color(red: 0.80, green: 0.42, blue: 0.10))
 
 let contact10 =
- Contact(name: "Sasha",
-         bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
-         textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
+Contact(name: "Moreno",
+        bgColor: Color(red: 0.97, green: 0.72, blue: 0.72),
+        textColor: Color(red: 0.85, green: 0.25, blue: 0.25))
 
 let contact11 =
-Contact(name: "KenzieFu",
+Contact(name: "Runi",
         bgColor: Color(red: 0.87, green: 0.80, blue: 0.97),
         textColor: Color(red: 0.50, green: 0.15, blue: 0.75))
 
 let contact12 =
- Contact(name: "DoriGoreng",
-         bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
-         textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
+Contact(name: "SamJOYCE",
+        bgColor: Color(red: 0.78, green: 0.91, blue: 0.97),
+        textColor: Color(red: 0.10, green: 0.55, blue: 0.80))
 
 let Contacts: [Contact] = [contact1,contact2,contact3, contact4,contact5,contact6,contact7,contact8,contact9,contact10,contact11,contact12]
 
