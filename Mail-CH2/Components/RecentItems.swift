@@ -20,6 +20,8 @@ struct RecentItems: View {
                 }
                 Text(mail.sender).font(.system(size:13))
             }
+            .padding(.bottom, 16)
+        }
     }
 }
 

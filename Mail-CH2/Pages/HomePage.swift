@@ -11,10 +11,19 @@ struct HomePage: View {
     @Environment(MailStore.self) var mailStore
     var body: some View {
         ScrollView{
-            VStack{
-                RecentList(mails:mailStore.recentMail())
-                InboxSection(title:"Important",mails:mailStore.filterImportanMail(), icon:"bookmark")
-                InboxSection(title:"Frequent",mails:mailStore.filterImportanMail(),icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
+            VStack(spacing:-19){
+                RecentList(mails:mailStore.recentMail()) 
+                    .padding(.leading, 23)
+                NavigationLink(destination:Inbox()){
+                    InboxSection(title:"Important",mails:mailStore.filterImportanMail(), icon:"bookmark")
+                }
+                .foregroundStyle(Color(.black))
+                .padding(.bottom, 24)
+                
+                NavigationLink(destination:Inbox()){
+                    InboxSection(title:"Frequent",mails:mailStore.filterImportanMail(),icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
+                }
+                .foregroundStyle(Color(.black))
             }
         }
         HStack{

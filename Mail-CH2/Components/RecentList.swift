@@ -17,13 +17,10 @@ struct RecentList: View {
                     ForEach(Array(mails.enumerated()), id: \.element.id) { index, mail in
                         RecentItems(mail:mail,color: colors[randomize(current: index, divider: colors.count)])
                     }
-                           
                 }.padding(.bottom, 10).padding(.top,10)
            
             }.frame(maxWidth:.infinity)
         }
-    
-       
     }
 }
 
