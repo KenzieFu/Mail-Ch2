@@ -23,7 +23,7 @@ struct RecentItems: View {
             .padding(.bottom, 16)
         }
     }
-}
+
 
 #Preview {
     RecentItems(mail:mails[0],color: colors[1] )
