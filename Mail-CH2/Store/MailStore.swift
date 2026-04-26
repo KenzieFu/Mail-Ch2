@@ -50,7 +50,9 @@ class MailStore {
         return mails.firstIndex(where: { $0.id == mail.id })!
     }
     
-  
+    func addMails(mail:Mail){
+        mails.append(mail)
+    }
     
     
 }

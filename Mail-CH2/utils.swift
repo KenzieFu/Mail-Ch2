@@ -11,6 +11,10 @@ func randomize(current: Int, divider: Int)-> Int {
     return current % divider;
 }
 
+func randomIndex(count: Int) -> Int {
+    return Int.random(in: 0..<count)
+}
+
 
 extension Color {
     init(hex: String) {
@@ -23,3 +27,6 @@ extension Color {
         self.init(red: r, green: g, blue: b)
     }
 }
+
+
+

@@ -268,7 +268,7 @@ struct Swipeable: View {
                             
                 }
             }
-            SwipeCard().offset(offset)   // add state offset so the object can update its position
+            SwipeCard(mail:mail).offset(offset)   // add state offset so the object can update its position
                 .rotationEffect(.degrees(rotationAngle))  // add tilt
                 .gesture(dragGesture)  // add the gesture
                 .animation(.interactiveSpring(), value: offset)  // animation

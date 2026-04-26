@@ -8,12 +8,19 @@
 import SwiftUI
 
 struct EmptySheet: View {
-    
+    @Environment(MailStore.self) var mailStore
     @Binding var showSheet: Bool
     @State var toField: String = ""
     @State  var ccBccFrom: String = ""
     @State  var subject: String = ""
     @State  var bodyText: String = ""
+    
+    private func addMail () -> Void {
+        var newMail: Mail = Mail( sender: "Kenzie", color: Color.red, subject: subject, date: Date.now, recipient: toField, summary: bodyText, isRead: false)
+        mailStore.addMails(mail:   newMail)
+        
+    }
+    
     
     @State var Contacts: [Contact]
     var body: some View {
@@ -86,9 +93,10 @@ struct EmptySheet: View {
                         
                         Divider().padding(.leading, 20)
                     }
-                    TextField("", text: $bodyText,axis:.vertical)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 14)
+                    TextEditor(text: $bodyText)
+                        .tint(.primary)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
                     Spacer()
                 }
             }
@@ -101,7 +109,10 @@ struct EmptySheet: View {
                 }
                 ToolbarSpacer(.fixed, placement: .topBarTrailing)
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button { showSheet = false
+                    Button {
+                        addMail()
+                        showSheet = false
+                        
                     } label: {
                         Image(systemName: "arrow.up")
                     }
@@ -113,5 +124,5 @@ struct EmptySheet: View {
     }
 }
 #Preview {
-    EmptySheet(showSheet: .constant(true),toField: "hello@gmail.com", Contacts: Contacts)
+    EmptySheet(showSheet: .constant(true),toField: "hello@gmail.com", Contacts: Contacts).environment(MailStore())
 }

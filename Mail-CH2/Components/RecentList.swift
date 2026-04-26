@@ -15,7 +15,9 @@ struct RecentList: View {
             ScrollView(.horizontal, showsIndicators: true){
                 LazyHStack(spacing:15){
                     ForEach(Array(mails.enumerated()), id: \.element.id) { index, mail in
-                        RecentItems(mail:mail,color: colors[randomize(current: index, divider: colors.count)])
+                        NavigationLink(destination:DetailScreenView(femail:mail,allMails: mails,currentIndex: index)){
+                            RecentItems(mail:mail,color: colors[randomize(current: index, divider: colors.count)])
+                        }.buttonStyle(.plain)
                     }
                 }.padding(.bottom, 10).padding(.top,10)
            
