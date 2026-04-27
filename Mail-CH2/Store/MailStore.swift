@@ -54,5 +54,26 @@ class MailStore {
         mails.append(mail)
     }
     
+    func frequentMail()->[Mail]{
+        var filteredMails: [Mail] = []
+        var seen = Set<String>()
+        var freqMails: [FrequentMail] = []
+
+        for mail in mails {
+            if seen.insert(mail.sender).inserted {
+                let count = mails.filter { $0.sender == mail.sender }.count
+                freqMails.append(FrequentMail(sender: mail.sender, count: count))
+            }
+        }
+
+        let ordered = freqMails.sorted { $0.count > $1.count }
+        
+        for freq in ordered {
+            let email = mails.first(where: { $0.sender == freq.sender })!
+            filteredMails.append(email)
+        }
+        return filteredMails
+    }
+    
     
 }

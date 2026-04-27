@@ -22,7 +22,7 @@ struct HomePage: View {
                 .padding(.horizontal,24)
                 
                 NavigationLink(destination:Inbox()){
-                    InboxSection(title:"Frequent",mails:mailStore.filterImportanMail(),icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
+                    InboxSection(title:"Frequent",mails:mailStore.frequentMail(),icon:"clock.arrow.trianglehead.counterclockwise.rotate.90")
                 }
                 .foregroundStyle(Color(.black))
                 .padding(.horizontal,24)

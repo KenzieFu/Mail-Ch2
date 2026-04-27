@@ -39,3 +39,19 @@ struct Mail: Identifiable {
    
 
 }
+
+
+struct FrequentMail: Identifiable, Hashable {
+    var id: UUID = UUID()
+    //characteristic
+    var sender: String
+    var count: Int
+    
+    init(sender: String,count : Int = 0) {
+        self.sender = sender
+        self.count = count
+    }
+    
+   
+
+}

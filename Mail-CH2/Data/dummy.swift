@@ -239,8 +239,64 @@ Mail(sender: "Hevy",
      isRead: true,
 )
 
+
+let mail13 =
+Mail(sender: "Tokopedia",
+     color:Color.green,
+     subject:"Pesanan Selesai: Microwave",
+     date:Date(),
+     recipient:"Moreno",
+     summary:"""
+                Hey Moreno, Your order has been delivered successfully, we hope you enjoy it! \n
+                Pesanan Anda untuk microwave telah berhasil доставkan dan kini sudah sampai di tujuan. Kami harap produk yang Anda terima sesuai dengan harapan dan dapat digunakan dengan baik. \n
+                Anda dapat melihat detail pesanan, termasuk informasi pengiriman dan pembayaran, melalui akun Tokopedia Anda kapan saja. \n
+                Jika ada kendala dengan pesanan Anda, jangan ragu untuk menghubungi penjual atau pusat bantuan kami untuk mendapatkan bantuan lebih lanjut. \n
+                Terima kasih telah berbelanja di Tokopedia, kami tunggu pesanan Anda berikutnya. \n
+                Best regards,
+                Tokopedia
+                """,
+     isRead: false,
+)
+
+let mail14 =
+Mail(sender: "Tokopedia",
+     color:Color.green,
+     subject:"Pesanan Selesai: Microwave",
+     date:Date(),
+     recipient:"Moreno",
+     summary:"""
+                Hey Moreno, Your order has been delivered successfully, we hope you enjoy it! \n
+                Pesanan Anda untuk microwave telah berhasil доставkan dan kini sudah sampai di tujuan. Kami harap produk yang Anda terima sesuai dengan harapan dan dapat digunakan dengan baik. \n
+                Anda dapat melihat detail pesanan, termasuk informasi pengiriman dan pembayaran, melalui akun Tokopedia Anda kapan saja. \n
+                Jika ada kendala dengan pesanan Anda, jangan ragu untuk menghubungi penjual atau pusat bantuan kami untuk mendapatkan bantuan lebih lanjut. \n
+                Terima kasih telah berbelanja di Tokopedia, kami tunggu pesanan Anda berikutnya. \n
+                Best regards,
+                Tokopedia
+                """,
+     isRead: false,
+)
+
+let mail15 =
+Mail(sender: "Hevy",
+     color:Color.black,
+     subject:"Check out your progress",
+     date:Date(),
+     recipient:"Choki",
+     summary:"""
+                Choki, you've lifted 10x your body weight. Keep up the great work! \n
+                We just took a look at your recent training progress, and it’s seriously impressive. You’ve reached a milestone of lifting a total volume equivalent to 10x your body weight. \n
+                This kind of consistency and effort shows real dedication to your strength journey. Every session is clearly adding up, and your progress reflects the work you’ve been putting in. \n
+                You can view your full stats, track your lifts, and see how far you’ve come anytime in the Hevy app. \n
+                Keep pushing, stay consistent, and keep building on this momentum. \n
+                Best regards,
+                Hevy
+                """,
+     isRead: true,
+)
+
+
 struct MailDummyData {
-    static let mails:[Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
+    static let mails:[Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12,mail13,mail14,mail15]
 }
 
 let mails: [Mail] = [mail1,mail2,mail3, mail4,mail5,mail6,mail7,mail8,mail9,mail10,mail11,mail12]
