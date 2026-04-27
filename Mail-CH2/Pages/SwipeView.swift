@@ -29,9 +29,9 @@ struct SwipeView: View {
                     }
                     VStack{
                         HStack{
-                            Image(systemName: "envelope.open.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.red)
+                            Image(systemName: "envelope.open.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.white)
                             Spacer()
-                            Image(systemName: "bookmark.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.green)
+                            Image(systemName: "bookmark.fill").font(Font.system(size: 30, weight: .bold)).foregroundColor(.white)
 
                         }.frame(maxWidth:.infinity).padding(.horizontal,30).padding(.vertical,20).opacity(0.3)
                        

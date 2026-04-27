@@ -10,6 +10,10 @@ import SwiftUI
 struct Navbar: View {
     
     @State private var showSheet = false
+    @State private var isSearching = false
+    @State private var searchText = ""
+    @FocusState private var searchFocused: Bool
+    
     var body: some View {
         NavigationStack{
             HStack {
@@ -54,30 +58,65 @@ struct Navbar: View {
             .frame(height: 56)
             .toolbar{
                 ToolbarItemGroup(placement: .bottomBar){
-                    NavigationLink(destination: SwipeView()) {
-                        Image(systemName: "rectangle.stack")
-                        Text("Cards")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.leading, 7)
-                    .padding(.trailing, 12)
-                    
-                    Spacer()
-                    Button("", systemImage: "magnifyingglass") {}
-                    //                    Button("", systemImage: "square.and.pencil") {}
-                    Button("", systemImage: "square.and.pencil") {
-                        showSheet = true
+                    if isSearching{
+                        NavigationLink(destination: SwipeView()) {
+                            Image(systemName: "rectangle.stack")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding(.horizontal, 7)
+                        
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundStyle(.secondary)
+                            TextField("Search mail...", text: $searchText)
+                                .focused($searchFocused)
+                                .submitLabel(.search)
+                        }
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
+                        Button("", systemImage: "multiply") {
+                            withAnimation(.spring(duration: 0.3)) {
+                                isSearching = false
+                                searchText = ""
+                                searchFocused = false
+                            }
+                        }
+                        
+                    } else {
+                        NavigationLink(destination: SwipeView()) {
+                            Image(systemName: "rectangle.stack")
+                            Text("Cards")
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding(.leading, 7)
+                        .padding(.trailing, 12)
+                        
+                        Spacer()
+                        Button("", systemImage: "magnifyingglass") {
+                            withAnimation(.spring(duration: 0.3)) {
+                                isSearching = true
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                                searchFocused = true
+                            }
+                        }
+                        
+                        Button("", systemImage: "square.and.pencil") {
+                            showSheet = true
+                        }
                     }
                 }
-            }
-            .sheet(isPresented: $showSheet) {
-                EmptySheet(showSheet: $showSheet, Contacts: Contacts)
-                    .presentationDragIndicator(.visible)
+                }
+                .sheet(isPresented: $showSheet) {
+                    EmptySheet(showSheet: $showSheet, Contacts: Contacts)
+                        .presentationDragIndicator(.visible)
+                }
             }
         }
     }
-}
-
-#Preview {
-    Navbar()
-}
+    
+    #Preview {
+        Navbar()
+    }

@@ -28,26 +28,6 @@ struct HomePage: View {
                 .padding(.horizontal,24)
             }
         }
-        HStack{
-//            HStack{
-//                NavigationLink(destination:SwipeView()){
-//                    HStack{
-//                        Image(systemName: "rectangle.stack")
-//                        Text("Cards")
-//                    }
-//                    .padding(.horizontal,20)
-//                    .padding(.vertical,10)
-//                    
-//                    
-//                }.background(Color.blue).foregroundColor(Color.white).clipShape(Capsule())
-//                
-//                
-//            }
-//            Spacer()
-//
-        }.background(Color.clear).frame(maxWidth:.infinity).padding(.horizontal,5)
-    
-    
     }
 }
 
